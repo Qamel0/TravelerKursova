@@ -22,49 +22,77 @@ header {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 24px;
+    padding: 13px;
     background-color: #0e3d8d;
     color: white;
+    max-height: 150px;
 }
 
 .headerTop {
     width: 100%;
     display: flex;
+    justify-content: space-between;
+}
+
+.headerTopLogin {
+    display: flex;
+    gap: 10px;
+}
+
+.login {
+    padding: 10px 15px;
+    background-color: white;
+    color: #0008ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .headerTop img {
-    width: 13%;
-    min-width: 200px
+    width: 17%;
+    min-width: 100px;
 }
 
 .headerBottom {
     width: 100%;
-    height: 110px;
-    margin-top: 0%;
-    margin-left: 10%;
+    max-height: 90px;
 }
 
 #mainCategories {
     display: flex;
+    flex-wrap: nowrap;
     justify-content: center;
     list-style: none;
-    width: auto;
-    margin-left: -35%;
+    width: 100%;
+    margin: 0 auto;
+    max-height: 100px;
+    padding: 0;
+    gap: 1.6%;
+    margin-top: 3%;
 }
 
 #mainCategories li {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: auto;
-    margin: 0 10px;
-    margin-top: -1.1%;
-    
+    max-height: 100px;
+    overflow: hidden;
+    margin-left: -4.2%;
 }
 
-#mainCategories li img {
-    width: 100%;
-    min-width: 170px;
+.category-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    max-height: 44px;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-left: -20%;
+}
+
+.category-box img {
+    
 }
 
 #mainCategories li:first-child {
