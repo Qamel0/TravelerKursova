@@ -4,21 +4,16 @@ using Traveler.Models;
 
 namespace Traveler.Controllers;
 
-public class HomeController : Controller
+public class CategoriesController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<CategoriesController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public CategoriesController(ILogger<CategoriesController> logger)
     {
         _logger = logger;
     }
 
-    public IActionResult Index()
-    {
-        return View();
-    }
-
-    public IActionResult Privacy()
+    public IActionResult Stays()
     {
         return View();
     }

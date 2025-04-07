@@ -27,7 +27,7 @@ namespace Traveler
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=Categories}/{action=Stays}/{id?}")
                 .WithStaticAssets();
 
             app.Run();
