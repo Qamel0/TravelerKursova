@@ -43,7 +43,7 @@ header {
     justify-content: flex-end;
 }
 
-.login {
+.loginLink {
     text-decoration: none;
     padding: 8px 20px;
     background-color: white;
@@ -118,6 +118,19 @@ body {
 }
 
 /* Body end */
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+#constructionText {
+    color: #1327c9;
+    font-size: 3em;
+    text-align: center;
+}
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
   color: var(--bs-secondary-color);

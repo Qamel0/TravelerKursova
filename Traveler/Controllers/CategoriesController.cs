@@ -15,7 +15,7 @@ public class CategoriesController : Controller
 
     public IActionResult Stays()
     {
-        return View();
+        return View("Stays");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
