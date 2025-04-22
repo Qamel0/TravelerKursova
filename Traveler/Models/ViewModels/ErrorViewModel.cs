@@ -1,4 +1,4 @@
-namespace Traveler.Models
+namespace Traveler.Models.ViewModels
 {
     public class ErrorViewModel
     {

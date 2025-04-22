@@ -30,7 +30,6 @@ body {
 }
 
 #login {
-    padding: 40px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -65,4 +64,9 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
+}
+
+.invalid-feedback {
+    color: red;
+    font-size: 0.9em;
 }

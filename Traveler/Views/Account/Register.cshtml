@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Traveler.Models.ViewModels
+@model RegisterViewModel;
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -10,12 +13,18 @@
 
 <body>
     <div class="loginBlock">
-        <form id="login" asp-asp-controller="Account" asp-action="Register" method="post">
+        <form id="login" asp-controller="Account" asp-action="Register" method="post">
             <h1>Створити акаунт</h1>
+
             <label for="email">Електронна адреса</label>
-            <input type="text" id="email" name="email" placeholder="Введіть свою електронну адресу" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+            <input type="text" asp-for="Email" id="email" name="email" class="form-control" placeholder="Введіть свою електронну адресу" />
+            
+            
             <label for="password">Пароль</label>
-            <input type="text" id="password" name="password" placeholder="Вигадайте пароль" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <input type="text" asp-for="Password" id="password" name="password" class="form-control" placeholder="Вигадайте пароль" />
+
             <button type="submit">Зареєструватися</button>
         </form>
     </div>

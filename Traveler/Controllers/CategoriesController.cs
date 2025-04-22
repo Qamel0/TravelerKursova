@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Traveler.Models;
+using Traveler.Models.ViewModels;
 
 namespace Traveler.Controllers;
 
