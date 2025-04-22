@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Authentication.Cookies
+@using Microsoft.AspNetCore.Authorization
+@using System.Security.Claims
+
+@{
+    var user = User.Identity;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -15,8 +23,16 @@
             <div class="headerTop">
                 <a id="homePage" href="/"><img src="~/svg/TravelerLogo.svg" alt="HomePage" /></a>
                 <div class="headerTopLogin">
-                    <a class="loginLink" href="/Account/Register">Зареєструватися</a>
-                    <a class="loginLink" href="/Account/SignIn">Увійти</a>
+                    @if (user?.IsAuthenticated == true)
+                    {
+                        <button id="profileBtn">@user.Name</button>
+                        <a id="exit" class="hidden" href="/Account/Logout">Вихід</a>
+                    }
+                    else
+                    {
+                        <a class="loginLink" href="/Account/Register">Зареєструватися</a>
+                        <a class="loginLink" href="/Account/SignIn">Увійти</a>
+                    }
                 </div>
             </div>
             <nav class="headerBottom">

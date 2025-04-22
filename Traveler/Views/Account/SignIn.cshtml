@@ -15,6 +15,10 @@
     <div class="loginBlock">
         <form id="login" asp-asp-controller="Account" asp-action="SignIn" method="post">
             <h1>Увійти в акаунт</h1>
+            
+            <div class="text-danger">
+                @Html.ValidationMessage("wrongLog")
+            </div>
 
             <label for="email">Електронна адреса</label>
             <span asp-validation-for="Email" class="text-danger"></span>

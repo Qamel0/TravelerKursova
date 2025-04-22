@@ -1,4 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Traveler.DTOs;
@@ -58,14 +62,47 @@ namespace Traveler.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignIn(RegisterViewModel model)
+        public async Task<IActionResult> SignIn(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
+                User? user = _user.GetUser(model.Email, model.Password);
 
+                if (user != null)
+                {
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, user.Email),
+                        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                    };
+
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+                    var authProperties = new AuthenticationProperties
+                    {
+                        IsPersistent = true,
+                        ExpiresUtc = DateTime.UtcNow.AddDays(30)
+                    };
+
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal, authProperties);
+
+                    return RedirectToAction("Stays", "Categories");
+                }
+                else
+                {
+                    ModelState.AddModelError("wrongLog", "Невірний логін чи пароль");
+                }
             }
 
             return View(model);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Stays", "Categories");
         }
     }
 }

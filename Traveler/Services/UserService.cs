@@ -22,6 +22,11 @@ namespace Traveler.Services
             return _context.SaveChanges() == 1;
         }
 
+        public User? GetUser(string email, string password)
+        {
+            return _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+        }
+
         public bool UserExists(User user)
         {
             return _context.Users.Any(u => u.Email == user.Email);

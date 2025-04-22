@@ -10,6 +10,6 @@
 		<path d="M2 19C2 18.4477 2.44772 18 3 18H21C21.5523 18 22 18.4477 22 19C22 19.5523 21.5523 20 21 20H3C2.44772 20 2 19.5523 2 19Z" fill="#FFFFFF"/>
 		<path d="M2 5C2 4.44772 2.44772 4 3 4H21C21.5523 4 22 4.44772 22 5C22 5.55228 21.5523 6 21 6H3C2.44772 6 2 5.55228 2 5Z" fill="#FFFFFF"/>
 
-		<text x="29" y="14" fill="white" font-size="9.5" font-family="Arial" alignment-baseline="middle">Аеропорт таксі</text>
+		<text x="28" y="14" fill="white" font-size="9.5" font-family="Arial" alignment-baseline="middle">Аеропорт таксі</text>
 	</g>
 </svg>

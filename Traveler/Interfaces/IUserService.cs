@@ -7,5 +7,6 @@ namespace Traveler.Interfaces
     {
         public bool AddUser(User user);
         public bool UserExists(User user);
+        public User? GetUser(string email, string password);
     }
 }
