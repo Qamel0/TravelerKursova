@@ -8,5 +8,10 @@ namespace Traveler.Controllers
         {
             return View("PageUnderConstruction");
         }
+
+        public IActionResult SomethingWrong()
+        {
+            return View("SomethingWrong");
+        }
     }
 }
