@@ -32,5 +32,12 @@
         <a id="search" href="#">Пошук</a>
     </div>
 
-    <a id="newStays" href="/Stays/NewPlace">Зареєструвати місце</a>
+    @if (TempData["regLog"] != null)
+    {
+        <div class="form-error">
+            @TempData["regLog"]
+        </div>
+    }
+    
+    <a id="newStays" href="/Stays/CheckAccess">Зареєструвати місце</a>
 </div>
