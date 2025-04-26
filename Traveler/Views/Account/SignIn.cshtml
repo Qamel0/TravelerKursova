@@ -2,7 +2,7 @@
 @model RegisterViewModel;
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "SignIn";
 }
 
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -10,20 +10,28 @@
 <link rel="stylesheet" href="~/Traveler.styles.css" asp-append-version="true" />
 
 <div class="loginBlock">
-    <form id="login" asp-asp-controller="Account" asp-action="SignIn" method="post">
-       <h1>Увійти в акаунт</h1>
-            
-        <div class="text-danger">
-            @Html.ValidationMessage("wrongLog")
+    <form id="login" asp-controller="Account" asp-action="SignIn" method="post">
+        <h1>Увійти в акаунт</h1>
+
+        @if (ViewData.ModelState.TryGetValue("wrongLog", out var wrongLogState) && wrongLogState?.Errors?.Count > 0)
+        {
+            <div class="form-error">
+                @Html.ValidationMessage("wrongLog")
+            </div>
+        }
+        
+
+        <div class="form-group">
+            <label for="email">Електронна адреса</label>
+            <input type="text" asp-for="Email" id="email" name="email" class="form-control" placeholder="Введіть електронну адресу" />
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
 
-        <label for="email">Електронна адреса</label>
-        <span asp-validation-for="Email" class="text-danger"></span>
-        <input type="text" asp-for="Email" id="email" name="email" class="form-control" placeholder="Введіть свою електронну адресу" />
-
-        <label for="password">Пароль</label>
-        <span asp-validation-for="Password" class="text-danger"></span>
-        <input type="text" asp-for="Password" id="password" name="password" class="form-control" placeholder="Згадайте пароль" />
+        <div class="form-group">
+            <label for="password">Пароль</label>
+            <input type="password" asp-for="Password" id="password" name="password" class="form-control" placeholder="Згадайте пароль" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
 
         <button type="submit">Увійти</button>
     </form>

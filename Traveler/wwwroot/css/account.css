@@ -23,38 +23,6 @@ body {
     margin-bottom: 60px;
 }
 
-.loginBlock {
-    display: grid;
-    padding: 40px;
-    place-items: center;
-}
-
-#login {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 400px;
-    white-space: nowrap;
-}
-
-#login h1 {
-    font-size: 22px;
-    width: 100%;
-}
-
-#login input {
-    min-width: 100%;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-#login button {
-    margin-top: 10px;
-    width: 100%;
-}
-
-
 /* Body end */
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
@@ -70,3 +38,83 @@ body {
     color: red;
     font-size: 0.9em;
 }
+
+/*Login*/
+
+.loginBlock {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#login {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    font-family: Arial, sans-serif;
+    align-items: center;
+}
+
+#login h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-error {
+    color: #e74c3c;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.text-danger {
+    font-size: 12px;
+    color: #e74c3c;
+    margin-top: 5px;
+}
+
+button[type="submit"] {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #3246e7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #258cfb;
+}
+
+/*Login*/

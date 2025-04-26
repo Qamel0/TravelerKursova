@@ -2,5 +2,35 @@
     ViewData["Title"] = "Home Page";
 }
 
+<div class="stays">
+    <div class="filters">
+        <div class="filter-group">
+            <label for="cities">Обране місто:</label>
+            <select id="cities" name="cities">
+                <option value="kyiv" selected>Київ</option>
+                <option value="kharkiv">Харків</option>
+                <option value="odesa">Одеса</option>
+                <option value="dnipro">Дніпро</option>
+                <option value="lviv">Львів</option>
+                <option value="kryvyi_rih">Кривий Ріг</option>
+                <option value="mykolaiv">Миколаїв</option>
+                <option value="zaporizhzhia">Запоріжжя</option>
+                <option value="vinnytsia">Вінниця</option>
+            </select>
+        </div>
 
+        <div class="filter-group">
+            <label for="rooms">Кількість кімнат:</label>
+            <select id="rooms" name="rooms">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4+">4+</option>
+            </select>
+        </div>
 
+        <button id="search">Пошук</button>
+    </div>
+
+    <a id="newStays" href="#">Зареєструвати місце</a>
+</div>
