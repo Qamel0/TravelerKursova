@@ -17,11 +17,13 @@ namespace Traveler.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IUserService _user;
+        private readonly IHttpContextAccessor _contextAccessor;
 
-        public AccountController(IMapper mapper, IUserService user)
+        public AccountController(IMapper mapper, IUserService user, IHttpContextAccessor contextAccessor)
         {
             _mapper = mapper;
             _user = user;
+            _contextAccessor = contextAccessor;
         }
 
         public IActionResult Register()
@@ -40,6 +42,8 @@ namespace Traveler.Controllers
 
                 if(userAdded)
                 {
+                    LoginService.LoginUser(user, _contextAccessor);
+
                     return RedirectToAction("Stays", "Categories");
                 }
                 else if(!userAdded)
@@ -62,7 +66,7 @@ namespace Traveler.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SignIn(RegisterViewModel model)
+        public IActionResult SignIn(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -70,23 +74,7 @@ namespace Traveler.Controllers
 
                 if (user != null)
                 {
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, user.Email),
-                        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-                    };
-
-                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                    var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
-                    var authProperties = new AuthenticationProperties
-                    {
-                        IsPersistent = true,
-                        ExpiresUtc = DateTime.UtcNow.AddDays(30)
-                    };
-
-                    await HttpContext.SignInAsync(
-                        CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal, authProperties);
+                    LoginService.LoginUser(user, _contextAccessor);
 
                     return RedirectToAction("Stays", "Categories");
                 }

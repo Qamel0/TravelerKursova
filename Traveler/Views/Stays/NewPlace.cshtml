@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "NewPlace";
+}
+
+<div class="staysRegister">
+    <h1>Реєстрація житла</h1>
+    <form action="/submit" method="POST" class="housing-form">
+        <div class="form-group">
+            <label for="title">Назва житла</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="rooms">Кількість кімнат</label>
+            <input type="number" id="rooms" name="rooms" required min="1">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Опис</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="photo">Фото житла</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+        </div>
+
+        <a id="submit" href="#">Додати</a>
+    </form>
+</div>

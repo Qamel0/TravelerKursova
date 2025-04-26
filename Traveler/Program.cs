@@ -16,6 +16,7 @@ namespace Traveler
 
             // Add services to the container.
 
+            builder.Services.AddHttpContextAccessor();
             builder.Services.AddControllersWithViews();
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
