@@ -32,6 +32,8 @@ namespace Traveler
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IStayService, StayService>();
+            builder.Services.AddScoped<IBytesConverterService<IFormFile>, PhotoConverterToBytes>();
 
             var app = builder.Build();
 

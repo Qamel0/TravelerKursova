@@ -4,27 +4,40 @@
 
 <div class="staysRegister">
     <h1>Реєстрація житла</h1>
-    <form action="/submit" method="POST" class="housing-form">
+
+    @if (ViewData.ModelState.TryGetValue("stayExists", out var stayExists) && stayExists?.Errors?.Count > 0)
+    {
+        <div class="form-error">
+            @Html.ValidationMessage("stayExists")
+        </div>
+    }
+
+    <form id="newPlace" asp-controller="Stays" asp-action="NewPlace" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="phone">Номер для зворотнього зв'язку</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+        </div>
+
         <div class="form-group">
             <label for="title">Назва житла</label>
-            <input type="text" id="title" name="title" required>
+            <input type="text" id="name" name="name" required>
         </div>
 
         <div class="form-group">
             <label for="rooms">Кількість кімнат</label>
-            <input type="number" id="rooms" name="rooms" required min="1">
+            <input type="number" id="roomCount" name="roomCount" required min="1">
         </div>
 
         <div class="form-group">
             <label for="description">Опис</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
+            <textarea id="describe" name="describe" rows="4" required></textarea>
         </div>
 
         <div class="form-group">
             <label for="photo">Фото житла</label>
-            <input type="file" id="photo" name="photo" accept="image/*">
+            <input type="file" id="staysPhoto" name="staysPhoto" accept="image/*">
         </div>
 
-        <a id="submit" href="#">Додати</a>
+        <button id="submit" type="submit">Додати</button>
     </form>
 </div>

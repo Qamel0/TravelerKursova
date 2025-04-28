@@ -2,6 +2,13 @@
     ViewData["Title"] = "Home Page";
 }
 
+@if (TempData["regLog"] != null)
+{
+    <div class="form-message">
+        @TempData["placeRegistered"]
+    </div>
+}
+
 <div class="stays">
     <div class="filters">
         <div class="filter-group">

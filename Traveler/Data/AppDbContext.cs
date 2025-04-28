@@ -13,6 +13,7 @@ public partial class AppDbContext : DbContext
     }
 
     public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<Stay> Stays { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -25,6 +26,11 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.Password).HasMaxLength(255);
         });
+
+        modelBuilder.Entity<Stay>()
+            .HasOne(e => e.User)
+            .WithMany(u => u.Stays)
+            .HasForeignKey(e => e.UserId);
 
         OnModelCreatingPartial(modelBuilder);
     }

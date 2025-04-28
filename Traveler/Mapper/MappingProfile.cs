@@ -13,6 +13,9 @@ namespace Traveler.Mapper
             CreateMap<RegisterViewModel, User>();
 
             CreateMap<RegisterDto, User>();
+
+            CreateMap<StaysRegViewModel, Stay>()
+                .ForMember(dest => dest.StaysPhoto, opt => opt.Ignore());
         }
     }
 }

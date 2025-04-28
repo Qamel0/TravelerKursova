@@ -19,7 +19,7 @@ namespace Traveler.Services
 
             _context.Users.Add(user);
 
-            return _context.SaveChanges() == 1;
+            return _context.SaveChanges() >= 1;
         }
 
         public User? GetUser(string email, string password)
