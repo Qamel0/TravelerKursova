@@ -11,8 +11,8 @@ using Traveler.Data;
 namespace Traveler.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250427123511_InitiateMigration")]
-    partial class InitiateMigration
+    [Migration("20250429152924_initialMigration")]
+    partial class initialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,13 @@ namespace Traveler.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Approved")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Describe")
                         .IsRequired()

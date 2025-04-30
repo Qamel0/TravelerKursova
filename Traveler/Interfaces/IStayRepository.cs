@@ -2,9 +2,10 @@
 
 namespace Traveler.Interfaces
 {
-    public interface IStayService
+    public interface IStayRepository
     {
         public bool AddStay(Stay stay);
+        public IEnumerable<Stay> GetAllStays();
         public bool StayExists(Stay stay);
     }
 }

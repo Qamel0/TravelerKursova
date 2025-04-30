@@ -3,12 +3,12 @@ using Traveler.Data;
 using Traveler.Interfaces;
 using Traveler.Models.Entities;
 
-namespace Traveler.Services
+namespace Traveler.Repositories
 {
-    public class StayService : IStayService
+    public class StayRepository : IStayRepository
     {
         private readonly AppDbContext _context;
-        public StayService(AppDbContext context)
+        public StayRepository(AppDbContext context)
         {
             _context = context;
         }
@@ -20,6 +20,11 @@ namespace Traveler.Services
             _context.Stays.Add(stay);
 
             return _context.SaveChanges() >= 1;
+        }
+
+        public IEnumerable<Stay> GetAllStays()
+        {
+            return _context.Stays.ToList();
         }
 
         public bool StayExists(Stay stay)

@@ -5,7 +5,7 @@
 namespace Traveler.Migrations
 {
     /// <inheritdoc />
-    public partial class InitiateMigration : Migration
+    public partial class initialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,9 +33,11 @@ namespace Traveler.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RoomCount = table.Column<int>(type: "int", nullable: false),
                     Describe = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StaysPhoto = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                    StaysPhoto = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    Approved = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

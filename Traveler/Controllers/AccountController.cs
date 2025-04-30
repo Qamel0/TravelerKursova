@@ -16,10 +16,10 @@ namespace Traveler.Controllers
     public class AccountController : Controller
     {
         private readonly IMapper _mapper;
-        private readonly IUserService _user;
+        private readonly IUserRepository _user;
         private readonly IHttpContextAccessor _contextAccessor;
 
-        public AccountController(IMapper mapper, IUserService user, IHttpContextAccessor contextAccessor)
+        public AccountController(IMapper mapper, IUserRepository user, IHttpContextAccessor contextAccessor)
         {
             _mapper = mapper;
             _user = user;

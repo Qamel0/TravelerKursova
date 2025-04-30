@@ -14,6 +14,21 @@
 
     <form id="newPlace" asp-controller="Stays" asp-action="NewPlace" method="POST" enctype="multipart/form-data">
         <div class="form-group">
+            <label for="city">Місто</label>
+            <select id="city" name="city" required>
+                <option value="kyiv" selected>Київ</option>
+                <option value="kharkiv">Харків</option>
+                <option value="odesa">Одеса</option>
+                <option value="dnipro">Дніпро</option>
+                <option value="lviv">Львів</option>
+                <option value="kryvyi_rih">Кривий Ріг</option>
+                <option value="mykolaiv">Миколаїв</option>
+                <option value="zaporizhzhia">Запоріжжя</option>
+                <option value="vinnytsia">Вінниця</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
             <label for="phone">Номер для зворотнього зв'язку</label>
             <input type="tel" id="phoneNumber" name="phoneNumber" required>
         </div>

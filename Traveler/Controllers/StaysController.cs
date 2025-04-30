@@ -10,10 +10,10 @@ namespace Traveler.Controllers
     public class StaysController : Controller
     {
         private readonly IMapper _mapper;
-        private readonly IStayService _stayService;
+        private readonly IStayRepository _stayService;
         private readonly IBytesConverterService<IFormFile> _bytesConverterService;
 
-        public StaysController(IMapper mapper, IStayService stayService, IBytesConverterService<IFormFile> bytesConverterService)
+        public StaysController(IMapper mapper, IStayRepository stayService, IBytesConverterService<IFormFile> bytesConverterService)
         {
             _mapper = mapper;
             _stayService = stayService;
@@ -23,6 +23,32 @@ namespace Traveler.Controllers
         public IActionResult NewPlace()
         {
             return View("NewPlace");
+        }
+
+        public IActionResult Places(string? city, string? rooms, string sortOrder)
+        {
+            var stays = _stayService.GetAllStays();
+
+            if (!string.IsNullOrEmpty(city))
+            {
+                stays = stays.Where(s => s.City.Equals(city, StringComparison.OrdinalIgnoreCase));
+            }
+
+            if (!string.IsNullOrEmpty(rooms) && int.TryParse(rooms, out int roomCount))
+            {
+                stays = stays.Where(s => s.RoomCount == roomCount);
+            }
+
+            stays = sortOrder switch
+            {
+                "name_asc" => stays.OrderBy(s => s.Name),
+                "name_desc" => stays.OrderByDescending(s => s.Name),
+                "room_asc" => stays.OrderBy(s => s.RoomCount),
+                "room_desc" => stays.OrderByDescending(s => s.RoomCount),
+                _ => stays
+            };
+
+            return View("SearchResult", stays.ToList());
         }
 
         [HttpPost]

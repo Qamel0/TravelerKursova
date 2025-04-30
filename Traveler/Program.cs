@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Traveler.Data;
 using Traveler.Interfaces;
 using Traveler.Mapper;
+using Traveler.Repositories;
 using Traveler.Services;
 
 
@@ -31,8 +32,8 @@ namespace Traveler
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddScoped<IUserService, UserService>();
-            builder.Services.AddScoped<IStayService, StayService>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IStayRepository, StayRepository>();
             builder.Services.AddScoped<IBytesConverterService<IFormFile>, PhotoConverterToBytes>();
 
             var app = builder.Build();

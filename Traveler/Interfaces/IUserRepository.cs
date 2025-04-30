@@ -3,7 +3,7 @@ using Traveler.Models.Entities;
 
 namespace Traveler.Interfaces
 {
-    public interface IUserService
+    public interface IUserRepository
     {
         public bool AddUser(User user);
         public bool UserExists(User user);

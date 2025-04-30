@@ -3,12 +3,12 @@ using Traveler.DTOs;
 using Traveler.Interfaces;
 using Traveler.Models.Entities;
 
-namespace Traveler.Services
+namespace Traveler.Repositories
 {
-    public class UserService : IUserService
+    public class UserRepository : IUserRepository
     {
         private readonly AppDbContext _context;
-        public UserService(AppDbContext context)
+        public UserRepository(AppDbContext context)
         {
             _context = context;
         }
