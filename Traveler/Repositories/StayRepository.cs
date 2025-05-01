@@ -22,6 +22,21 @@ namespace Traveler.Repositories
             return _context.SaveChanges() >= 1;
         }
 
+        public bool RemoveStay(Stay stay)
+        {
+            if (!StayExists(stay)) return false;
+
+            _context.Remove(stay);
+
+            return _context.SaveChanges() >= 1;
+
+        }
+
+        public Stay? GetStayById (int id)
+        {
+            return _context.Stays.FirstOrDefault(s => s.Id == id);
+        }
+
         public IEnumerable<Stay> GetAllStays()
         {
             return _context.Stays.ToList();
@@ -30,7 +45,17 @@ namespace Traveler.Repositories
         public bool StayExists(Stay stay)
         {
             return _context.Stays.Any(
-                s => s.Name == stay.Name && s.RoomCount == stay.RoomCount && s.Describe == stay.Describe);
+                s => s.Name == stay.Name && stay.City == s.City && s.RoomCount == stay.RoomCount 
+                && stay.PhoneNumber == s.PhoneNumber || stay.StaysPhoto == s.StaysPhoto);
+        }
+
+        public bool ApproveStay(Stay stay)
+        {
+            stay.Approved = true;
+
+            _context.Update(stay);
+
+            return _context.SaveChanges() >= 1;
         }
     }
 }

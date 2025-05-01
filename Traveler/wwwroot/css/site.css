@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -236,6 +236,23 @@ select {
     color: #0056b3;
 }
 
+.form-message {
+    color: white;
+    background-color: green;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.placeLinks {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
 /*Stays*/
 
 /*Forms*/
@@ -327,7 +344,7 @@ input[type="file"] {
     margin-bottom: 20px;
 }
 
-.sort-links {
+.sort-links div {
     text-align: center;
     margin-bottom: 20px;
     font-size: 1rem;
@@ -339,9 +356,9 @@ input[type="file"] {
     font-weight: bold;
 }
 
-    .sort-link:hover {
-        text-decoration: underline;
-    }
+.sort-link:hover {
+    text-decoration: underline;
+}
 
 .stays-list {
     display: grid;
@@ -357,9 +374,9 @@ input[type="file"] {
     transition: box-shadow 0.3s ease;
 }
 
-    .stay-item:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+.stay-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 .apartment-photo {
     width: 100%;
@@ -381,4 +398,57 @@ input[type="file"] {
 .stay-details p {
     margin: 5px 0;
     line-height: 1.5;
+}
+
+.stay-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+    .stay-actions form {
+        display: inline-block;
+        margin: 0;
+    }
+
+.approve-button,
+.reject-button {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.approve-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.approve-button:hover {
+    background-color: #45a049;
+}
+
+.reject-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.reject-button:hover {
+    background-color: #d32f2f;
+}
+
+.no-stays-message {
+    background-color: #136dbe;
+    color: #ffffff;
+    border: 1px solid #26348f;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 18px;
+    margin: 40px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }

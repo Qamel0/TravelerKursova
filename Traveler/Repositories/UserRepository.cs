@@ -1,5 +1,4 @@
 ﻿using Traveler.Data;
-using Traveler.DTOs;
 using Traveler.Interfaces;
 using Traveler.Models.Entities;
 
@@ -20,6 +19,11 @@ namespace Traveler.Repositories
             _context.Users.Add(user);
 
             return _context.SaveChanges() >= 1;
+        }
+
+        public User? GetUserById(int id)
+        {
+            return _context.Users.FirstOrDefault(u => u.Id == id);
         }
 
         public User? GetUser(string email, string password)

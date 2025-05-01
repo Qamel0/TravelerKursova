@@ -9,6 +9,10 @@
     </div>
 }
 
+@{
+    var user = User.Identity;
+}
+
 <div class="stays">
     <form method="get" action="/Stays/Places">
         <div class="filters">
@@ -37,17 +41,28 @@
                 </select>
             </div>
 
-            <!-- Кнопка отправки формы -->
             <button id="search" type="submit">Пошук</button>
         </div>
     </form>
 
-    @if (TempData["regLog"] != null)
+    @if (TempData["staysErrorLog"] != null)
     {
         <div class="form-error">
-            @TempData["regLog"]
+            @TempData["staysErrorLog"]
         </div>
     }
 
-    <a id="newStays" href="/Stays/CheckAccess">Зареєструвати місце</a>
+    <div class="placeLinks">
+        <a id="newStays" href="/Stays/ShowAllPlaces">Показати усі місця</a>
+
+        @if (user?.IsAuthenticated == true && user.Name == "admin@admin")
+        {
+            <a id="newStays" href="/Stays/AwaitingApproval">Місця що очікують схвалення</a>
+        }
+        else
+        {
+            <a id="newStays" href="/Stays/CheckAccess">Зареєструвати місце</a>
+        }
+    </div>
+    
 </div>

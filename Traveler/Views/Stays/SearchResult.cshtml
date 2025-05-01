@@ -1,7 +1,17 @@
-﻿@model IEnumerable<Traveler.Models.Entities.Stay>
+﻿@using Traveler.Interfaces
+@model IEnumerable<Traveler.Models.Entities.Stay>
+@inject IUserRepository UserRepository;
 
 @{
     ViewData["Title"] = "StaysList";
+}
+
+@{
+    var user = User.Identity;
+}
+
+@{
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
 }
 
 @{
@@ -22,29 +32,80 @@
 <div class="container">
     <h1 class="title">Доступні помешкання</h1>
 
-    <!-- Ссылки для сортировки -->
     <p class="sort-links">
-        Сортувати по:
-        <a class="sort-link" asp-action="Places" asp-route-sortOrder="name_asc">Им'я (A-Z)</a> |
-        <a class="sort-link" asp-action="Places" asp-route-sortOrder="name_desc">Им'я' (Z-A)</a> |
-        <a class="sort-link" asp-action="Places" asp-route-sortOrder="room_asc">Кімнати (меньше-більше)</a> |
-        <a class="sort-link" asp-action="Places" asp-route-sortOrder="room_desc">Кімнати (більше-меньше)</a>
-    </p>
-
-    <!-- Список апартаментов -->
-    <div class="stays-list">
-        @foreach (var stay in Model)
+        @if (user?.IsAuthenticated == true && user.Name == "admin@admin" && currentAction == "AwaitingApproval")
         {
-            <div class="stay-item">
-                <img src="@("data:image/jpeg;base64," + Convert.ToBase64String(stay.StaysPhoto))" alt="Фото апартамента" class="apartment-photo" />
-                <div class="stay-details">
-                    <h3 class="stay-name">@stay.Name</h3>
-                    <p><strong>Місто:</strong> @(cityTranslations.ContainsKey(stay.City.ToLower()) ? cityTranslations[stay.City.ToLower()] : stay.City)</p>
-                    <p><strong>Телефон:</strong> @stay.PhoneNumber</p>
-                    <p><strong>Кількість кімнат:</strong> @stay.RoomCount</p>
-                    <p><strong>Опис:</strong> @stay.Describe</p>
-                </div>
+            <div>
+                Сортувати по:
+                <a class="sort-link" asp-action="AwaitingApproval" asp-route-sortOrder="name_asc">Им'я (A-Z)</a> |
+                <a class="sort-link" asp-action="AwaitingApproval" asp-route-sortOrder="name_desc">Им'я (Z-A)</a> |
+                <a class="sort-link" asp-action="AwaitingApproval" asp-route-sortOrder="room_asc">Кімнати (меньше-більше)</a> |
+                <a class="sort-link" asp-action="AwaitingApproval" asp-route-sortOrder="room_desc">Кімнати (більше-меньше)</a>
             </div>
         }
+        else
+        {
+            <div>
+                Сортувати по:
+                <a class="sort-link" asp-action="Places" asp-route-sortOrder="name_asc">Им'я (A-Z)</a> |
+                <a class="sort-link" asp-action="Places" asp-route-sortOrder="name_desc">Им'я (Z-A)</a> |
+                <a class="sort-link" asp-action="Places" asp-route-sortOrder="room_asc">Кімнати (меньше-більше)</a> |
+                <a class="sort-link" asp-action="Places" asp-route-sortOrder="room_desc">Кімнати (більше-меньше)</a>
+            </div>
+        }
+
+    </p>
+
+    <div class="stays-list">
+        @if(Model != null && Model.Any())
+        {
+            @foreach (var stay in Model)
+            {
+                var currentUser = UserRepository.GetUserById(stay.UserId);
+
+                <div class="stay-item">
+                    <img src="@("data:image/jpeg;base64," + Convert.ToBase64String(stay.StaysPhoto))" alt="Фото апартамента" class="apartment-photo" />
+                    <div class="stay-details">
+                        <h3 class="stay-name">@stay.Name</h3>
+                        <p><strong>Місто:</strong> @(cityTranslations.ContainsKey(stay.City.ToLower()) ? cityTranslations[stay.City.ToLower()] : stay.City)</p>
+                        <p><strong>Телефон:</strong> @stay.PhoneNumber</p>
+                        <p><strong>Кількість кімнат:</strong> @stay.RoomCount</p>
+                        <p><strong>Опис:</strong> @stay.Describe</p>
+
+                        @if (user?.IsAuthenticated == true && currentUser != null && currentUser.Email == user.Name)
+                        {
+                            <div class="stay-actions">
+                                <form asp-action="RejectStay" method="post">
+                                    <input type="hidden" name="id" value="@stay.Id" />
+                                    <button type="submit" class="reject-button">Видалити</button>
+                                </form>
+                            </div>
+                        }
+
+                        @if (user?.IsAuthenticated == true && user.Name == "admin@admin" && currentAction == "AwaitingApproval")
+                        {
+                            <div class="stay-actions">
+                                <form asp-action="ApproveStay" method="post">
+                                    <input type="hidden" name="id" value="@stay.Id" />
+                                    <button type="submit" class="approve-button">Схвалити</button>
+                                </form>
+
+                                <form asp-action="RejectStay" method="post">
+                                    <input type="hidden" name="id" value="@stay.Id" />
+                                    <button type="submit" class="reject-button">Відхилити</button>
+                                </form>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="no-stays-message">
+                <p>Наразі немає доступних помешкань</p>
+            </div>
+        }
+
     </div>
 </div>

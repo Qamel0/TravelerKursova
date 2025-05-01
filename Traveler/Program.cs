@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Traveler.Data;
 using Traveler.Interfaces;
@@ -27,6 +28,8 @@ namespace Traveler
                     options.ExpireTimeSpan = TimeSpan.FromDays(7);
                     options.SlidingExpiration = true;
                 });
+
+            
 
             builder.Services.AddAutoMapper(typeof(MappingProfile));
             builder.Services.AddDbContext<AppDbContext>(options =>

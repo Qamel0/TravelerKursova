@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Traveler.DTOs;
 using Traveler.Models.Entities;
 using Traveler.Models.ViewModels;
 
@@ -9,10 +8,7 @@ namespace Traveler.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<RegisterViewModel, RegisterDto>();
             CreateMap<RegisterViewModel, User>();
-
-            CreateMap<RegisterDto, User>();
 
             CreateMap<StaysRegViewModel, Stay>()
                 .ForMember(dest => dest.StaysPhoto, opt => opt.Ignore());

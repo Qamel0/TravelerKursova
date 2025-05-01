@@ -1,5 +1,4 @@
-﻿using Traveler.DTOs;
-using Traveler.Models.Entities;
+﻿using Traveler.Models.Entities;
 
 namespace Traveler.Interfaces
 {
@@ -7,6 +6,7 @@ namespace Traveler.Interfaces
     {
         public bool AddUser(User user);
         public bool UserExists(User user);
+        public User? GetUserById(int id);
         public User? GetUser(string email, string password);
     }
 }
