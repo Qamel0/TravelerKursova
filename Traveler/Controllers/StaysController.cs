@@ -134,6 +134,18 @@ namespace Traveler.Controllers
             return View("SearchResult", _stayService.GetAllStays().Where(s => s.Approved == false));
         }
 
+        public IActionResult RemoveStay(int Id)
+        {
+            Stay? stay = _stayService.GetStayById(Id);
+
+            if (stay != null)
+            {
+                _stayService.RemoveStay(stay);
+            }
+
+            return View("SearchResult", _stayService.GetAllStays().Where(s => s.Approved == true));
+        }
+
         [HttpPost]
         public IActionResult NewPlace(StaysRegViewModel model)
         {
