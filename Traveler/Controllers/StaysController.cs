@@ -107,7 +107,7 @@ namespace Traveler.Controllers
                 _ => stays
             };
 
-            return View("SearchResult", stays.ToList());
+            return View("SearchResult", _stayService.GetAllStays().Where(s => s.Approved == false));
         }
 
         public IActionResult ApproveStay(int Id)
@@ -119,7 +119,7 @@ namespace Traveler.Controllers
                 _stayService.ApproveStay(stay);
             }
 
-            return View("SearchResult", _stayService.GetAllStays());
+            return RedirectToAction("AwaitingApproval");
         }
 
         public IActionResult RejectStay(int Id)

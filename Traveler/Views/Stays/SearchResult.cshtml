@@ -72,7 +72,9 @@
                         <p><strong>Кількість кімнат:</strong> @stay.RoomCount</p>
                         <p><strong>Опис:</strong> @stay.Describe</p>
 
-                        @if (user?.IsAuthenticated == true && currentUser != null && currentUser.Email == user.Name)
+                        @if (user?.IsAuthenticated == true &&
+                        currentUser?.Email != null &&
+                        (currentUser.Email == user.Name || user.Name == "admin@admin" && currentAction != "AwaitingApproval"))
                         {
                             <div class="stay-actions">
                                 <form asp-action="RemoveStay" method="post">
