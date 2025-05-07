@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Traveler", "Traveler\Traveler.csproj", "{6EC2F84F-0A09-4FE6-A55D-3E04ED3D6D30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelerTests", "TravelerTests\TravelerTests.csproj", "{27531D73-A4D2-4716-BC72-E2F1B04E28DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6EC2F84F-0A09-4FE6-A55D-3E04ED3D6D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EC2F84F-0A09-4FE6-A55D-3E04ED3D6D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EC2F84F-0A09-4FE6-A55D-3E04ED3D6D30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27531D73-A4D2-4716-BC72-E2F1B04E28DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27531D73-A4D2-4716-BC72-E2F1B04E28DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27531D73-A4D2-4716-BC72-E2F1B04E28DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27531D73-A4D2-4716-BC72-E2F1B04E28DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

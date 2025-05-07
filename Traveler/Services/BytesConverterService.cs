@@ -11,6 +11,11 @@ namespace Traveler.Services
     {
         public override byte[] ConvertToBytes(IFormFile file)
         {
+            if (file == null)
+            {
+                throw new ArgumentNullException(nameof(file), "File cannot be null.");
+            }
+
             using (var memoryStream = new MemoryStream())
             {
                 file.CopyTo(memoryStream);

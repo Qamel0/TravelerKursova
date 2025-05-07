@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Traveler.Repositories.StayRepository">
+    <Position X="4.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAIAAAEAAEg=</HashCode>
+      <FileName>Repositories\StayRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.682" />
+  </Class>
+  <Class Name="Traveler.Services.BytesConverter&lt;T&gt;">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\BytesConverterService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Traveler.Services.PhotoConverterToBytes">
+    <Position X="8.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\BytesConverterService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Traveler.Repositories.UserRepository">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAABQAAAAAAAAAAAAAAAAAgEAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Traveler.Models.Entities.Stay" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIDAAACAAAAAAgIAAAAQAwAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Stay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Traveler.Models.Entities.User" Collapsed="true">
+    <Position X="1" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Traveler.Interfaces.IStayRepository">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAEAAEg=</HashCode>
+      <FileName>Interfaces\IStayRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Traveler.Interfaces.IBytesConverterService&lt;T&gt;">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IBytesConverterService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Traveler.Interfaces.IUserRepository">
+    <Position X="6.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAgEAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
