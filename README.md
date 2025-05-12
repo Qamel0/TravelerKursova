@@ -37,8 +37,8 @@
    git clone https://github.com/yourusername/repositoryname.git
 2. Відкрийте проект у Visual Studio.
 3. Встановіть необхідні пакети NuGet.
-4. Запустіть базу даних findTeachers.
-5. Налаштуйте з'єднання з базою даних у файлі DataBaseConnectionClass.cs.
+4. Запустіть базу даних Traveler.
+5. Налаштуйте з'єднання з базою даних у файлі appsettings.json.
 6. Запустіть проект.
 
 ## Архітектура
