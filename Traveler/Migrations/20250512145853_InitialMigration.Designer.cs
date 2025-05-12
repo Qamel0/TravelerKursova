@@ -11,8 +11,8 @@ using Traveler.Data;
 namespace Traveler.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250429152924_initialMigration")]
-    partial class initialMigration
+    [Migration("20250512145853_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
